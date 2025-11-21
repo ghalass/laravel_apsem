@@ -7,12 +7,14 @@ use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
+use App\Traits\GeneralTraits;
 
 class SiteController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+    use GeneralTraits;
     public function index()
     {
         // $sites = Site::paginate(5);
@@ -20,7 +22,7 @@ class SiteController extends Controller
         // $sites = Site::orderBy('id', 'desc')->get();
         // $sites = Site::orderBy('id', 'desc')->take(5)->get();
         // $sites = DB::table('sites')->get();
-
+        // $this->displayMsg();
         $sites = Site::all();
         return view('site.index', ['sites' => $sites]);
     }

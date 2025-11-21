@@ -4,9 +4,10 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Symfony\Component\HttpFoundation\Response;
 
-class PoliceMan
+class SetLocale
 {
     /**
      * Handle an incoming request.
@@ -15,7 +16,12 @@ class PoliceMan
      */
     public function handle(Request $request, Closure $next): Response
     {
-        // echo "Policier";
+        // Vérifie que la session existe
+        if ($request->hasSession() && $request->session()->has('locale')) {
+            App::setlocale(
+                $request->session()->get('locale', 'fr')
+            );
+        }
         return $next($request);
     }
 }

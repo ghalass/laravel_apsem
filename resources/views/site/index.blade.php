@@ -6,6 +6,7 @@
 
 @section('content')
     <div class="container mt-2">
+
         <h1>Liste des sites</h1>
         <a href="{{ route('sites.create') }}">Nouveau</a>
         @if (@isset($sites) and !@empty($sites) and $sites->count() > 0)

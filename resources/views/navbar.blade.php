@@ -5,15 +5,29 @@
             <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
-            <a href="{{ route('home') }}" class="nav-link">Home</a>
+            <a href="{{ route('welcome') }}" class="nav-link">Home</a>
         </li>
         <li class="nav-item d-none d-sm-inline-block">
             <a href="#" class="nav-link">Contact</a>
         </li>
     </ul>
 
+
+
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+        <div class="d-flex align-items-center">
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{ route('ar') }}" class="nav-link px-1">AR</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{ route('fr') }}" class="nav-link px-1">FR</a>
+            </li>
+            <li class="nav-item d-none d-sm-inline-block">
+                <a href="{{ route('en') }}" class="nav-link px-1">EN</a>
+            </li>
+        </div>
+
         <!-- Navbar Search -->
         <li class="nav-item">
             {{-- <a class="nav-link" data-widget="navbar-search" href="#" role="button">
@@ -36,6 +50,8 @@
                 </form>
             </div> --}}
         </li>
+
+
 
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
