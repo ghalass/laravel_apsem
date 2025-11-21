@@ -6,7 +6,8 @@
 
 @section('content')
     <div class="container">
-        <h1>Ajouter un nouveau parc</h1>
+        <livewire:create-parc />
+        {{-- <h1>Ajouter un nouveau parc</h1>
         <a href="{{ route('parcs.index') }}">parcs</a>
         <form method="POST" action="{{ route('parcs.store') }}">
             @csrf
@@ -26,6 +27,6 @@
                 <p class="text-danger text-sm fst-italic">{{ $message }}</p>
             @enderror
             <button class="btn btn-md btn-outline-primary">Ajouter</button>
-        </form>
+        </form> --}}
     </div>
 @endsection

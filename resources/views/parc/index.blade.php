@@ -6,9 +6,9 @@
 
 @section('content')
     <div class="container mt-2">
-        <h1>Liste des parcs</h1>
         <a href="{{ route('parcs.create') }}">Nouveau</a>
-        @if (@isset($parcs) and !@empty($parcs) and $parcs->count() > 0)
+        <livewire:parcs />
+        {{-- @if (@isset($parcs) and !@empty($parcs) and $parcs->count() > 0)
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
@@ -37,9 +37,8 @@
                     @endforeach
                 </tbody>
             </table>
-            {{-- {{ $parcs->links() }} --}}
         @else
             <p>Aucun parc n'est trouvé!!</p>
-        @endif
+        @endif --}}
     </div>
 @endsection

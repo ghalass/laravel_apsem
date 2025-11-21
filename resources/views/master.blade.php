@@ -15,23 +15,25 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin/dist/css/adminlte.min.css') }}" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
 </head>
 
 <!-- Scripts -->
 {{-- @vite(['resources/sass/app.scss', 'resources/js/app.js']) --}}
+@livewireStyles
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
-        @include('navbar')
+        @include('components.navbar')
 
-        @include('sidebar')
+        @include('components.sidebar')
 
         <div class="content-wrapper">
 
             <div class="content">
+                <x-alert />
                 <div class="container-fluid">
                     <div class="row">
-                        <x-alert />
                         @yield('content')
                     </div>
                 </div>
@@ -66,6 +68,7 @@
     {{-- <script src="{{ asset('admin/dist/js/demo.js') }}"></script> --}}
     <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
     {{-- <script src="{{ asset('admin/dist/js/pages/dashboard3.js') }}"></script> --}}
+    @livewireScripts
 </body>
 
 </html>

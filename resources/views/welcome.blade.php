@@ -9,5 +9,6 @@
         <h1>Welcome Page</h1>
         {{ __('trans.Home.title') }}
 
+        <livewire:counter />
     </div>
 @endsection

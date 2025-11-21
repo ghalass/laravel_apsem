@@ -5,9 +5,12 @@
 @endsection
 
 @section('content')
-    <div class="container">
-        <h1>Ajouter un nouveau site</h1>
+    <div class="container mt-2">
         <a href="{{ route('sites.index') }}">Sites</a>
+        <livewire:site-create />
+    </div>
+    {{-- <div class="container">
+    <h1>Ajouter un nouveau site</h1>
 
         <form method="POST" action="{{ route('sites.store') }}">
             @csrf
@@ -23,5 +26,5 @@
         </form>
 
 
-    </div>
+    </div> --}}
 @endsection

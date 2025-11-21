@@ -1,9 +1,10 @@
-<div class="mt-2">
+<div class="container-fluid">
     @if (Session::has('success'))
-        <div class="alert alert-success" role="alert">
+        <div class="alert alert-success mt-2" role="alert">
             {{ Session::get('success') }}
         </div>
     @endif
+
     @if (Session::has('error'))
         <div class="alert alert-danger" role="alert">
             {{ Session::get('error') }}
