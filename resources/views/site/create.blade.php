@@ -8,14 +8,20 @@
     <div class="container">
         <h1>Ajouter un nouveau site</h1>
         <a href="{{ route('sites.index') }}">Sites</a>
-        <form method="POST" action="{{ route('sites.store') }}" class="form-control">
+
+        <form method="POST" action="{{ route('sites.store') }}">
             @csrf
-            <input value="{{ old('name') }}" class="form-control mb-2" type="text" name="name" placeholder="Nom du site"
-                autocomplete="off">
+
+            <input type="text" name="name" value="{{ old('name') }}" placeholder="Nom du site" autocomplete="off"
+                class="form-control mb-2 {{ $errors->has('name') ? 'is-invalid' : '' }}">
+
             @error('name')
                 <p class="text-danger text-sm fst-italic">{{ $message }}</p>
             @enderror
-            <button class="btn btn-md btn-outline-primary">Ajouter</button>
+
+            <button class="btn btn-md btn-outline-primary mb-2">Ajouter</button>
         </form>
+
+
     </div>
 @endsection

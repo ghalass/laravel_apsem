@@ -9,7 +9,7 @@
         {{-- <pre> {{ var_dump($parc) }}</pre> --}}
         <h1>Modifier un parc</h1>
         <a href="{{ route('parcs.index') }}">parcs</a>
-        <form method="POST" action="{{ route('parcs.update', $parc->id) }}" class="form-control">
+        <form method="POST" action="{{ route('parcs.update', $parc->id) }}">
             @csrf
             @method('PATCH')
             <input class="form-control mb-2" type="text" value="{{ old('name', $parc->name) }}" name="name"

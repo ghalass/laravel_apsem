@@ -1,13 +1,13 @@
  <aside class="main-sidebar sidebar-light-primary elevation-1 ">
      <!-- Brand Logo -->
-     <a href="index3.html" class="brand-link text-sm">
+     <a href="index3.html" class="brand-link ">
          <img src="{{ asset('admin/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
              class="brand-image img-circle elevation-1" style="opacity: 0.8" />
          <span class="brand-text font-weight-light">AdminLTE 3</span>
      </a>
 
      <!-- Sidebar -->
-     <div class="sidebar text-sm">
+     <div class="sidebar ">
          <!-- Sidebar Menu -->
          <nav class="mt-2">
              <ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu"

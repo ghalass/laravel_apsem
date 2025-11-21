@@ -6,6 +6,7 @@ use App\Http\Requests\CreateSiteRequest;
 use App\Models\Site;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class SiteController extends Controller
 {
@@ -35,16 +36,26 @@ class SiteController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(CreateSiteRequest $request)
+    public function store(Request $request)
     {
-        // $validated = $request->validate([
-        //     'name' => 'required|min:2'
-        // ]);
-        $dataToInsert = [
-            'name' => $request->name
-        ];
-        Site::create($dataToInsert);
-        return redirect()->route('sites.index');
+        // Même style que dans update()
+        $validated = $request->validate([
+            'name' => [
+                'required',
+                'min:2',
+                Rule::unique('sites', 'name'),
+            ],
+        ], [
+            'name.unique' => 'Nom du site existe déjà',
+        ]);
+
+        Site::create([
+            'name' => $validated['name'],
+        ]);
+
+        return redirect()
+            ->route('sites.index')
+            ->with(['success' => 'Ajouté avec succès']);
     }
 
     /**
@@ -71,11 +82,24 @@ class SiteController extends Controller
      */
     public function update($id, Request $request)
     {
-        // dd($id);
-        $site = Site::find($id);
-        $site->name = $request->name;
+        // Validation avec règle unique MAIS en ignorant l'ID actuel
+        $validated = $request->validate([
+            'name' => [
+                'required',
+                'min:2',
+                Rule::unique('sites')->ignore($id),
+            ],
+        ], [
+            'name.unique' => 'Nom du site existe déjà',
+        ]);
+
+        $site = Site::findOrFail($id);
+        $site->name = $validated['name'];
         $site->save();
-        return redirect()->route('sites.index');
+
+        return redirect()
+            ->route('sites.index')
+            ->with(['success' => 'Modifié avec succès']);
     }
 
     /**
@@ -84,7 +108,17 @@ class SiteController extends Controller
     public function destroy($id)
     {
         $site = Site::find($id);
+
+        if (!$site) {
+            return redirect()
+                ->back()
+                ->with(['error' => "Le site demandé n'existe pas."]);
+        }
+
         $site->delete();
-        return redirect()->route('sites.index');
+
+        return redirect()
+            ->back()
+            ->with(['success' => 'Supprimé avec succès']);
     }
 }

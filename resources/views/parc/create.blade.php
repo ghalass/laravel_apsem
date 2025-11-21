@@ -8,7 +8,7 @@
     <div class="container">
         <h1>Ajouter un nouveau parc</h1>
         <a href="{{ route('parcs.index') }}">parcs</a>
-        <form method="POST" action="{{ route('parcs.store') }}" class="form-control">
+        <form method="POST" action="{{ route('parcs.store') }}">
             @csrf
             <input value="{{ old('name') }}" class="form-control mb-2" type="text" name="name" placeholder="Nom du parc"
                 autocomplete="off">
