@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home')->middleware('PoliceMan');
 
 Route::resource('sites', SiteController::class);
 Route::resource('typeparcs', TypeparcController::class);
